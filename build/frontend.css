@@ -1,0 +1,27 @@
+.frontend {
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.07);
+  background-color: #ffe5b4;
+  border: 2px solid #ffda97;
+  color: #ce9c41;
+  padding: 20px;
+  margin: 20px 0;
+}
+.frontend p {
+  margin: 0;
+  padding: 0;
+}
+.frontend .title {
+  font-size: 60px;
+}
+.frontend .description {
+  font-size: 20px;
+}
+.frontend .image {
+  height: 15.7rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*# sourceMappingURL=frontend.css.map*/
