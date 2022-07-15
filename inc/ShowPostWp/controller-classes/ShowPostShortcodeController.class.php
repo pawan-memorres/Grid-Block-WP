@@ -7,29 +7,11 @@ use \Shortcode\View\LayoutView as LayoutView;
 
 class ShowPostShortcodeController {
 
-    function __construct() {
 
-        add_shortcode( "ShowPost", array( $this, "showPostShortcodeCallback"));
+    function showPostShortcodeCallback( $attr ) {
 
-    }
 
-    function showPostShortcodeCallback( $attributes ) {
-
-        ob_start();
-
-        //Attributes for Shortcode
-        $attr = shortcode_atts( array(
-
-            'post_type' => 'post',
-            'posts_per_page' => 2,
-            'taxonomy' => 'product_cat',
-            'order' => 'ASC',
-            'category_filter' => 'yes',
-            'layout' => 'masonry-layout',
-
-        ), $attributes );
-
-        //Statements Method Call
+        // var_dump($attr);
         $shortcodeQueryInstance = new GenerateShortcodeQuery();
 
 
@@ -43,14 +25,16 @@ class ShowPostShortcodeController {
 
         $queryArray = $shortcodeQueryInstance -> getQueryArray();
         $queryArray += array('maxPageNumber' => $max_page_number,
-                            'category_filter' => esc_attr($attr['category_filter']),
-                            'taxonomy' => esc_attr($attr['taxonomy']));
-        // var_dump($queryArray);
-
+                            );
+        if($attr['category_filter'] == "yes" ) {
+          $queryArray += array(
+            'category_filter' => esc_attr($attr['category_filter']),
+            'taxonomy' => esc_attr($attr['taxonomy']),
+          );
+        }
 
         $this -> generateHTMlWithLayout( $result, $layout, $passQueryInstance, $queryArray);
 
-        return ob_get_clean();
 
     }
 

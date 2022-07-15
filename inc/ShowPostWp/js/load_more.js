@@ -166,7 +166,7 @@ if(jsonArrayObj.category_filter == 'yes') {
     },
     success: function (res) {
       // console.log('from dropdown sucess');
-       console.log(res);
+      // console.log(res.paged);
       // console.log(res.max);
       loadContainer.empty();//Here because of when empty button will come in place of remove element
       // $( '#load-more' ).hide();

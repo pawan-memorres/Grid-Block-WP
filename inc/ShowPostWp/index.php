@@ -22,13 +22,10 @@ if(file_exists( dirname(__FILE__) . '/view-classes/LayoutView.class.php')) {
 if(file_exists( dirname(__FILE__) . '/controller-classes/ShowPostShortcodeController.class.php')) {
     require_once(dirname(__FILE__) . '/controller-classes/ShowPostShortcodeController.class.php');
 }
-if(file_exists( dirname(__FILE__) . '/controller-classes/ShowPostBlockController.class.php')) {
-    require_once(dirname(__FILE__) . '/controller-classes/ShowPostBlockController.class.php');
-}
 
-if(file_exists( dirname(__FILE__) . '/shortcode.php')) {
-    require_once(dirname(__FILE__) . '/shortcode.php');
-}
+// if(file_exists( dirname(__FILE__) . '/shortcode.php')) {
+//     require_once(dirname(__FILE__) . '/shortcode.php');
+// }
 
 if(file_exists( dirname(__FILE__) . '/data-classes/ShortcodeAjax.class.php')) {
     require_once(dirname(__FILE__) . '/data-classes/ShortcodeAjax.class.php');

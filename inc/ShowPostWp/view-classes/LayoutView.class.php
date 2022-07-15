@@ -28,6 +28,8 @@ class LayoutView {
       }
 
     }
+
+
   }
 
   function getButtonTemplate() {
@@ -46,6 +48,9 @@ class LayoutView {
         require $plugin_template;
       }
     }
+
+    
+
   }
 
   function getCategoryListTemplate( $category_args ) {
@@ -64,6 +69,7 @@ class LayoutView {
         require $plugin_template;
       }
     }
+
 
   }
 

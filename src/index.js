@@ -1,92 +1,39 @@
+/**
+ * Registers a new block provided a unique name and an object defining its behavior.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+import { registerBlockType } from '@wordpress/blocks';
 import "./index.scss"
-import logo from './assets/wpgl-logo.png';
-import {InspectorControls, useBlockProps} from '@wordpress/block-editor';
-import {Panel, PanelBody, Dropdown, Button, SelectControl} from '@wordpress/components';
-import PostTypeSelect from './PostTypeSelect.js';
-import NumberOfPosts from './NumberOfPosts.js';
-import PostLayout from './PostLayout.js';
-import PostCategory from './PostCategory.js';
-import CategoryFilter from './CategoryFilter.js';
-import SelectTaxonomy from './SelectTaxonomy.js';
-import SortSelect from './SortSelect.js';
 
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * All files containing `style` keyword are bundled together. The code used
+ * gets applied both to the front of your site and to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+// import './style.scss';
 
-const { RichText, MediaUpload, PlainText } = wp.editor;
+/**
+ * Internal dependencies
+ */
+import Edit from './edit';
+import save from './save';
+import metadata from './block.json';
 
-
-
-
-wp.blocks.registerBlockType("gutenberg/custom-block", {
-  title: "WPGL Grid Block",
-  icon: "welcome-learn-more",
-  category: "common",
-  attributes: {
-    post_type: {
-      type: 'string',
-      default: 'posts'
-    },
-    category_name: {
-      type: 'string',
-      default: 'uncategorized'
-    },
-    posts_per_page:
-    { type: 'integer',
-     default: 1
-    },
-    layout:{
-      type:"string",
-      default: 'Single'
-    },
-    category_filter:{
-      type:"string",
-      default: 'no'
-    },
-    order:{
-      type:"string",
-      default: 'asc'
-    },
-    taxonomy:{
-      type: 'string',
-      default: 'uncategorized'
-    }
-    
-  },
-  edit: EditComponent,
-  save: function () {
-    return null
-  }
-})
-
-function EditComponent(props) {
-  
-  
-  return (
-    <>
-    
-    <InspectorControls>
-      <Panel>
-        
-        <PostTypeSelect {...props} />
-        <NumberOfPosts {...props} />
-        <PostLayout {...props} />
-        <PostCategory {...props}/>
-        <SelectTaxonomy {...props}/>
-        <CategoryFilter {...props}/>
-        <SortSelect {...props}/>
-      
-      </Panel>
-    </InspectorControls>
-    <div className="WPGL__Container">
-      <h1 className="">WPGL POSTS</h1>
-      <h3 className="">Post Type: {props.attributes.post_type}      </h3>
-      <h3 className="">Number of Post Per Page:{props.attributes.posts_per_page} </h3>
-      <h3 className="">Post Layout:  {props.attributes.layout}    </h3>
-      <h3 className="">Category: {props.attributes.category_name}      </h3>
-      <h3 className="">Taxomony: {props.attributes.taxonomy}      </h3>
-      <h3 className="">Show Filter: {props.attributes.category_filter}      </h3>
-      <h3 className="">Order: {props.attributes.order}      </h3>
-    </div>
-    </>
-  )
-}
-
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+registerBlockType( metadata.name, {
+	/**
+	 * @see ./edit.js
+	 */
+	edit: Edit,
+	/**
+	 * @see ./save.js
+	 */
+	save,
+} );

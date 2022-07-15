@@ -1,6 +1,7 @@
-import "./frontend.scss"
+// import "./frontend.scss"
 import React, { useState } from "react"
 import ReactDOM from "react-dom"
+import "./frontend.scss"
 
 const divsToUpdate = document.querySelectorAll(".update-me")
 

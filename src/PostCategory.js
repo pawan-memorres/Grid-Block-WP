@@ -11,25 +11,23 @@ class PostCategory extends React.Component{
     };
 
     componentDidMount() {
-        fetch( "http://localhost:83/wp-json/wp/v2/categories")
+        fetch( "/wp-json/wp/v2/categories")
             .then((res) => res.json())
             .then((json) => {
                 const categorySelection = Object.keys(json).map((key)=>({
                     label:json[key].name,
                     value:json[key].slug
                   }));
-                  console.log(categorySelection);
                 this.setState({
                     categorySelection
                 });
             })
-
             
     }
 
     render(){
         
-        const { categorySelection } = this.state;
+    const { categorySelection } = this.state;
     const { category_name } = this.props.attributes;
 
     const setCategory = (category_name) => {

@@ -33,13 +33,13 @@ function load_more_callback() {
 	else {
         $queryInstance -> setTaxonomy($jsonObject["taxonomy"]);
         $queryArray = array(
-            "post_type" => 'posts',
-            "posts_per_page" => '3',
-            "order" => 'desc',
+            "post_type" => $queryInstance -> getPostType(),
+            "posts_per_page" => $queryInstance -> getPostPerPage(),
+            "order" => $queryInstance -> getOrder(),
             "paged" => $queryInstance -> getPageNumber(),
             "tax_query" => array(
                 array( 
-                  "taxonomy" => 'category',
+                  "taxonomy" => $queryInstance -> getTaxonomy(),
                   "field" => "slug",
                   "terms" => $jsonObject['categoryArray'],
                 )
@@ -51,14 +51,14 @@ function load_more_callback() {
 	$response = '';
   
 	if($ajaxposts->have_posts()) {
-		//ob_start();
+		ob_start();
 	  while($ajaxposts->have_posts()) : $ajaxposts->the_post();
 		$response .= $layoutView->getTemplateView();
 	  endwhile;
 	  $output = ob_get_contents();
 	  //get the maximum number of pages for the post type
 	  $max_pages = $ajaxposts ->max_num_pages;
-	  //ob_end_clean();
+	  ob_end_clean();
 	} else {
 	  $response = '';
 	}

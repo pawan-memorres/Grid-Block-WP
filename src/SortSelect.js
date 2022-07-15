@@ -20,7 +20,7 @@ class SortSelect extends React.Component{
 
 
         return(
-            <PanelBody title="Order">
+            <PanelBody title="Post Order">
                  <SelectControl
                     label="Select Order"
                   value= { order }

@@ -19,7 +19,7 @@ class PostTypeSelect extends React.Component{
                     label:json[key].name,
                     value:json[key].slug
                   }));
-                  console.log(postSelection);
+                  // console.log(postSelection);
                 this.setState({
                     postSelection
                 });
@@ -49,7 +49,7 @@ class PostTypeSelect extends React.Component{
           onChange={ setPostType }
           __nextHasNoMarginBottom
       />
-      </PanelBody>
+          </PanelBody>
         );
     }
 };
